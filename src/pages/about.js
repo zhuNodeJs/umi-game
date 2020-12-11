@@ -14,7 +14,7 @@ const About = (props) => {
       <h2>第二种方式跳转</h2>
       <button onClick={() => history.push('/product/aaaaaa')}>内联跳转Product Page</button>
     </div>
-  );
+  );  
 }
 
 About.title = 'hello About router'
