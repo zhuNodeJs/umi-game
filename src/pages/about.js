@@ -8,6 +8,7 @@ const About = (props) => {
     history.push('/product/uuuuu')
   }
   return (
+    
     <div>
       <h1 className={styles.title}>Page about</h1>
       <button onClick={goToProductPage}>Go to Proudct Page</button>
