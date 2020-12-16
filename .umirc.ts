@@ -5,6 +5,8 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
+  dva: {},
+  antd: {},
   nodeModulesTransform: {
     type: 'none',
   },
