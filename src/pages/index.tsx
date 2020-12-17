@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.less';
 
 import { Layout, Menu } from 'antd';
@@ -16,6 +16,15 @@ export default (props: IRouteComponentProps) => {
     children,
     location: { pathname },
   } = props;
+
+  useEffect(() => {
+    window.addEventListener('hashchange', hashLocation => {
+      console.log('window.location.hash---', window.location.hash);
+    });
+    return () => {
+      window.removeEventListener('hashchange', () => {});
+    };
+  }, []);
   return (
     <Layout>
       <Header>

@@ -1,10 +1,5 @@
 import React, { FC } from 'react';
-import {
-  IRouteComponentProps,
-  connect,
-  ConnectProps,
-  HeroModelState,
-} from 'umi';
+import { connect, ConnectProps, HeroModelState } from 'umi';
 import styles from './hero.less';
 
 interface PageProps extends ConnectProps {

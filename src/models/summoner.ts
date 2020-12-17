@@ -18,7 +18,7 @@ export interface SummonerModelType {
 const SummonerModel: SummonerModelType = {
   namespace: 'summoner',
   state: {
-    name: 'this is Summer',
+    name: 'this is summoner',
   },
   effects: {
     *query({ payload }, { call, put }) {},

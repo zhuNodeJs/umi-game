@@ -16,5 +16,9 @@ const Summoner: FC<PageProps> = props => {
   );
 };
 
-const mapStateToProps = () => {};
+const mapStateToProps = ({ summoner }: { summoner: SummonerModelState }) => {
+  return {
+    summoner,
+  };
+};
 export default connect(mapStateToProps)(Summoner);
