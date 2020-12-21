@@ -17,14 +17,6 @@ export default (props: IRouteComponentProps) => {
     location: { pathname },
   } = props;
 
-  useEffect(() => {
-    window.addEventListener('hashchange', hashLocation => {
-      console.log('window.location.hash---', window.location.hash);
-    });
-    return () => {
-      window.removeEventListener('hashchange', () => {});
-    };
-  }, []);
   return (
     <Layout>
       <Header>
