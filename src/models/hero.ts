@@ -1,6 +1,6 @@
 import { Effect, Reducer, request, Subscription } from 'umi';
 
-interface HeroProps {
+export interface HeroProps {
   ename: number;
   cname: string;
   title: string;
@@ -13,6 +13,8 @@ export interface HeroModelState {
   name: string;
   heros: HeroProps[];
   filterKey: number;
+  freeheros: [];
+  itemHover: number;
 }
 
 export interface HeroModelType {
@@ -36,21 +38,23 @@ const HeroModel: HeroModelType = {
     name: 'hero',
     heros: [],
     filterKey: 0,
+    freeheros: [],
+    itemHover: 0,
   },
   effects: {
     *query({ payload }, { call, put }) {},
     *fetch({ payload }, { call, put }) {
-      const data1 = yield request('/herodetails.json', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json; charset=utf-8',
-        },
-        body: JSON.stringify({
-          ename: 110,
-        }),
-      });
-      console.log('+++++++++++++++++', data1);
+      // const data1 = yield request('/herodetails.json', {
+      //   method: 'POST',
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json; charset=utf-8',
+      //   },
+      //   body: JSON.stringify({
+      //     ename: 110,
+      //   }),
+      // });
+      // console.log('+++++++++++++++++', data1);
       const data = yield request('/herolist.json');
       const localData = [
         {
@@ -70,10 +74,21 @@ const HeroModel: HeroModelType = {
           skin_name: '恋之微风|万圣前夜|天鹅之梦|纯白花嫁|缤纷独角兽',
         },
       ];
+      const freeheros = yield request('/freeheros.json', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify({
+          number: 10,
+        }),
+      });
       yield put({
         type: 'save',
         payload: {
           heros: data || localData,
+          freeheros,
         },
       });
     },
