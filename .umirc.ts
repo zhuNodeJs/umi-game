@@ -30,6 +30,10 @@ export default defineConfig({
           routes: [
             { path: '/summoner', component: '@/pages/summoner' },
             { path: '/hero', component: '@/pages/hero' },
+            {
+              path: '/herodetail/:ename',
+              component: '@/pages/herodetail/ename',
+            },
             { path: '/item', component: '@/pages/item' },
           ],
         },

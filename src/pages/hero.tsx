@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { connect, ConnectProps, HeroModelState } from 'umi';
+import { connect, ConnectProps, HeroModelState, history } from 'umi';
 import styles from './hero.less';
 import { Row, Col, Card, Radio } from 'antd';
 import FreeHeroItem from '@/components/FreeHeroItem';
@@ -28,6 +28,7 @@ const Hero: FC<PageProps> = props => {
     itemHover = 0,
   } = props.hero;
   const { dispatch } = props;
+  const { match } = props;
   const onChange = (e: any) => {
     console.log(e.target.value);
     dispatch!({
@@ -45,6 +46,10 @@ const Hero: FC<PageProps> = props => {
       },
     });
   };
+
+  const routerTo = (ename: number) => {
+    history.push('/herodetail/' + ename);
+  };
   return (
     <div className={styles.normal}>
       <div className={styles.info}>
@@ -59,6 +64,7 @@ const Hero: FC<PageProps> = props => {
                     itemHover={itemHover}
                     onItemHover={onItemHover}
                     thisIndex={index}
+                    routerTo={routerTo}
                     key={index}
                   ></FreeHeroItem>
                 );
