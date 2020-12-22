@@ -10,6 +10,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  // base: '/yun',
   // proxy: {
   //   '/api': {
   //     'target': 'https://pvp.qq.com',
